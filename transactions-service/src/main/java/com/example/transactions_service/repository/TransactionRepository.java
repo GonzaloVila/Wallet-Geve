@@ -1,4 +1,13 @@
 package com.example.transactions_service.repository;
 
-public class TransactionRepository {
+import com.example.transactions_service.model.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+
+    List<Transaction> findBySourceAccountIdOrTargetAccountId(Long sourceAccountId, Long targetAccountId);
 }
